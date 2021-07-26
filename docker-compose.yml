@@ -6,13 +6,23 @@ services:
     image: postgres
     env_file: .env
     ports:
-      - "5432:5432"
+      - "5436:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: "no"
     networks:
       - service
-
+  
+  postgres_arm:
+    image: arm64v8/postgres
+    env_file: .env
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: "no"
+    networks:
+      - service 
   mysql:
     image: mysql
     env_file: .env
